@@ -12,7 +12,9 @@ defmodule Games do
   :world
 
   """
-  def hello do
-    :world
+  def main(args) do
+    {opts, _word, _errors} = OptionParser.parse(args, switches: [time: :string])
+    Games.Wordle.play()
+    IO.puts("Good #{opts[:time] || "morning"}!")
   end
 end
