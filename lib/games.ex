@@ -8,8 +8,8 @@ defmodule Games do
 
   ## Examples
 
-      iex> Games.hello()
-      :world
+  iex> Games.hello()
+  :world
 
   """
   def hello do
