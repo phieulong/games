@@ -3,6 +3,7 @@ defmodule Games.Wordle do
   Word play
   """
 
+  @spec play() :: :ok
   @doc """
   iex> Games.Wordle.feedback("aaaaa", "aaaaa")
   [:green, :green, :green, :green, :green]
@@ -56,7 +57,7 @@ defmodule Games.Wordle do
           gc == ac ->
             :green
 
-          index > 0 && gc_before == gc && Enum.at(acc, index) == :yellow ->
+          index > 0 && gc_before == gc && Enum.at(acc, index) != :grey ->
             :grey
 
           gc in answer_chars ->
