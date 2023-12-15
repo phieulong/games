@@ -47,6 +47,10 @@ enter \"stop\" to exit \n") |> String.downcase() |> String.replace("\n", "") do
 
       "stop" ->
         true
+
+      _ ->
+        IO.puts("invalid choice. Choice again")
+        play()
     end
   end
 end
