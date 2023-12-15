@@ -1,4 +1,6 @@
 defmodule Games.RockPaperScissors do
+  @moduledoc false
+
   def play do
     options = ["rock", "paper", "scissors"]
     win_condition = [{"rock", "scissors"}, {"scissors", "paper"}, {"paper", "rock"}]

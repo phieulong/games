@@ -22,7 +22,7 @@ defmodule Games.Wordle do
 
     rs =
       feedback(rand, IO.gets("input: "))
-      |> Enum.map(fn e ->
+      |> Enum.map_join(", ", fn e ->
         case e do
           :green ->
             IO.ANSI.green() <> "green" <> IO.ANSI.reset()
@@ -34,12 +34,13 @@ defmodule Games.Wordle do
             IO.ANSI.light_black() <> "grey" <> IO.ANSI.reset()
         end
       end)
-      |> Enum.join(", ")
 
     IO.puts("[#{rs}]")
   end
 
+  @spec feedback(binary(), binary()) :: list()
   def feedback(answer, guess) do
+    :lists
     answer_chars = String.codepoints(answer)
     guess_chars = String.codepoints(guess)
 

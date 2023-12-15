@@ -1,4 +1,7 @@
 defmodule Games.GuessingGame do
+  @moduledoc """
+  Guessing Game
+  """
   def play do
     rand = Enum.random(5..10)
     is_continue(rand)
