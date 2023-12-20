@@ -15,6 +15,7 @@ defmodule Games.GuessingGame do
 
     cond do
       guest_number == rand ->
+        Games.Score.add_score(5)
         IO.puts("Correct!")
 
       guest_number > rand ->

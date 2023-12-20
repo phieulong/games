@@ -20,13 +20,16 @@ defmodule Games do
   end
 
   def play() do
+    Games.ScoreTracker.start_link()
+
     case IO.gets("
 What game would you like to play?
 1. Guessing Game
 2. Rock Paper Scissors
 3. Wordle
 
-enter \"stop\" to exit \n") |> String.downcase() |> String.replace("\n", "") do
+enter \"stop\" to exit
+enter \"score\" to view your current score\n") |> String.downcase() |> String.replace("\n", "") do
       "1" ->
         IO.puts("")
         GuessingGame.play()
@@ -43,6 +46,12 @@ enter \"stop\" to exit \n") |> String.downcase() |> String.replace("\n", "") do
         IO.puts("")
         Wordle.play()
         IO.puts("------------------------")
+        play()
+
+      "score" ->
+        IO.puts("=========================")
+        IO.puts("Your score is #{Games.Score.current_score()}")
+        IO.puts("=========================")
         play()
 
       "stop" ->

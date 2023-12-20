@@ -21,8 +21,14 @@ defmodule Games.Wordle do
   def play() do
     rand = Enum.random(["toast", "tarts", "hello", "beats"])
 
+    first = feedback(rand, IO.gets("input: "))
+
+    if Enum.all?(first, fn e -> e == :green end) do
+      Games.Score.add_score(25)
+    end
+
     rs =
-      feedback(rand, IO.gets("input: "))
+      first
       |> Enum.map_join(", ", fn e ->
         case e do
           :green ->

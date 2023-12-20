@@ -19,6 +19,7 @@ defmodule Games.RockPaperScissors do
 
     cond do
       {player_choice, rand} in win_condition ->
+        Games.Score.add_score(10)
         IO.puts("You win! #{player_choice} beats #{rand}.!")
 
       {rand, player_choice} in win_condition ->
